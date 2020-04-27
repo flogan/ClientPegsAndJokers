@@ -8,7 +8,7 @@ import { GamesService } from '../shared/games/games.service';
   styleUrls: ['./new-game.component.css']
 })
 export class NewGameComponent implements OnInit {
-  game;
+  game: any;
 
   constructor(private route: ActivatedRoute,
               private router: Router,

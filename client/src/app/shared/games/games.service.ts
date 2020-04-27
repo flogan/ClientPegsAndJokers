@@ -6,14 +6,27 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GamesService {
+  public API = '//localhost:8080';
 
   constructor(private http: HttpClient) { }
 
   postNewGame(): Observable<any> {
-    return this.http.post('//localhost:8080/games', {});
+    return this.http.post(this.API + '/games', {});
   }
 
   getAllGames(): Observable<any> {
-    return this.http.get('//localhost:8080/games');
+    return this.http.get(this.API + '/games');
+  }
+
+  getGame(Id): Observable<any> {
+    return this.http.get(this.API + `/game/${Id}`)
+  }
+
+  getGameBoard(Id): Observable<any> {
+    return this.http.get(this.API + `/game/${Id}/board`);
+  }
+
+  postGameTurn(Id): Observable<any> {
+    return this.http.post(this.API + `/game/${Id}/turns`, {});
   }
 }
