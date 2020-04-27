@@ -1,0 +1,9 @@
+<h2>Create a new Game!</h2>>
+
+<div>
+    <h3>New game Id: {{ game.id }}</h3>
+    <h3>Players</h3>
+    <div *ngFor="let player of game.players">
+        {{ player.name }}
+    </div>
+</div>
