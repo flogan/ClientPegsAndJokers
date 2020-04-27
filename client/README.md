@@ -1,8 +1,19 @@
-# Client
+# Client For Pegs And Jokers
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
+This project is intentded as a front end client for [PegsandJokers](https://github.com/dan-logan/PegsAndJokers).
+
+Built and generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
 
 ## Development server
+Requires Node and Angular. 
+
+[Node Download](https://nodejs.org/en/download/)
+
+In your working directory, run `npm install -g @angular/cli` to install Angular CLI.
+
+Run `npm install` to download projects dependencies.
+
+Execute PegsAndJokers Springboot application.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
