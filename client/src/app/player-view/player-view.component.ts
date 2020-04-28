@@ -9,8 +9,9 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./player-view.component.css']
 })
 export class PlayerViewComponent implements OnInit {
+  temp: any;
   playerView: any;
-
+  cards: Array<any>; 
   sub: Subscription;
 
   constructor(private route: ActivatedRoute,
@@ -23,13 +24,12 @@ export class PlayerViewComponent implements OnInit {
       const playerNum = params['playerNum'];
       if (gameId && playerNum){
         this.playerService.getPlayerView(gameId, playerNum).subscribe(data => {
-          this.playerView = JSON.stringify(data);
+          this.temp = JSON.stringify(data);
+          this.playerView = (data);
+          this.cards = (data.playerHand.cards)
         });
       }
     })
-
-
-
   }
 
 }

@@ -1,5 +1,12 @@
 <h1>player-view</h1>
 
 <div>
-    {{ playerView }}
+    {{ temp }}
+</div>
+
+<div>
+    <h2>Cards</h2>
+    <div *ngFor="let card of cards" >
+        {{ card.name }}
+    </div>
 </div>
