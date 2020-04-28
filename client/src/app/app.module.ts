@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { GamesComponent } from './games/games.component';
 import { NewGameComponent } from './new-game/new-game.component';
+import { PlayerViewComponent } from './player-view/player-view.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { NewGameComponent } from './new-game/new-game.component';
     HomeComponent,
     AppComponent,
     GamesComponent,
-    NewGameComponent
+    NewGameComponent,
+    PlayerViewComponent
   ],
   imports: [
     BrowserModule,
