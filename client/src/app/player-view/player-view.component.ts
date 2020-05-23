@@ -40,16 +40,29 @@ export class PlayerViewComponent implements OnInit {
   }
 
   initBoard(data){
-    //TODO : Make dynamic for any number of boards 3 - 8
     this.ctx = this.canvas.nativeElement.getContext('2d');
-    this.ctx.lineWidth = 10;
-    this.sides[0] = new BoardSide(this.playerView.board.playerSides[0], this.ctx, [500,860], 0);
-    this.ctx.lineWidth = 10;
-    this.sides[1] = new BoardSide(this.playerView.board.playerSides[1], this.ctx, [140,500], (3 * Math.PI) / 2);
-    this.ctx.lineWidth = 10;
-    this.sides[2] = new BoardSide(this.playerView.board.playerSides[2], this.ctx, [500,140], Math.PI);
-    this.ctx.lineWidth = 10;
-    this.sides[3] = new BoardSide(this.playerView.board.playerSides[3], this.ctx, [860,500], Math.PI / 2);
+    this.ctx.fillStyle = "papayawhip";
+    this.ctx.fillRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
+    const numPlayers = this.playerView.board.playerSides.length;
+    var rotationStep = (-2 * Math.PI) / numPlayers; 
+    var boardLength = 720; //TODO: scale board size and pegs with players appropriately. Possibly Add responsivity to canvas, and grab which center
+    var radius = boardLength / (2 * Math.tan(Math.PI / numPlayers));
+    for (let player = 0; player < numPlayers; player++){
+      var x = 500 + this.displacedX(radius, rotationStep * player);
+      var y = 500 + this.displacedY(radius, rotationStep * player);
+      console.log("x: " + x);
+      console.log("y: " + y);
+      this.ctx.lineWidth = 10;
+      this.sides[player] = new BoardSide(this.playerView.board.playerSides[player], this.ctx, [x, y],  rotationStep * player, boardLength);
+    }
+  }
+
+  private displacedX(distance: number, angle: number): number{
+    return distance * Math.sin(angle); //negative angles
+  }
+
+  private displacedY(distance: number, angle: number): number{
+    return distance * Math.cos(angle); //negative angles
   }
 
   log(): void {

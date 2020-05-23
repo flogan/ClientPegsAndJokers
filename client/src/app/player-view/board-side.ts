@@ -17,7 +17,7 @@ export class BoardSide {
         x: 0,
         y: 0
     };
-    boardLength = 720;
+    boardLength = 0; //720 for square
     // Relative directions based on unit circle
     private UP = Math.PI / 2;
     private DOWN = (3 * Math.PI) / 2; //not really used
@@ -25,9 +25,10 @@ export class BoardSide {
     private RIGHT = 0; //not really used
     
 
-    constructor(private side: any, private contx: CanvasRenderingContext2D, center: any, angle: number){
+    constructor(private side: any, private contx: CanvasRenderingContext2D, center: any, angle: number, boardLength: number){
         console.log('Creating BoardSide --- ');
         this.color = side.color;
+        this.boardLength = boardLength;
         this.center.x = center[0];
         this.center.y = center[1];
         this.angle = angle;
@@ -128,7 +129,6 @@ export class BoardSide {
     }
 
     private drawHoles(): void{
-        console.log(this.pegHoles);
         this.pegHoles.forEach(pegHole => {
             this.ctx.beginPath();
             this.ctx.moveTo(pegHole.x, pegHole.y);
@@ -145,12 +145,10 @@ export class BoardSide {
     }
 
     private displacedX(distance: number, angle: number): number{
-        console.log(distance * Math.cos(angle));
         return distance * Math.cos(angle);
     }
 
     private displacedY(distance: number, angle: number): number{
-        console.log(distance * Math.sin(angle));
         return distance * Math.sin(angle);
     }
 }
